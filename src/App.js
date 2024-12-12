@@ -29,10 +29,13 @@ const App = () => {
       });
 
       if (response.ok) {
+        console.log(response);
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
       } else {
+        console.log(response);
+
         console.error("Failed to generate audio:", response.statusText);
         alert("Error generating audio.");
       }
@@ -78,9 +81,12 @@ const App = () => {
       });
 
       if (response.ok) {
+        console.log(response);
         const data = await response.json();
         setTranscription(data.transcription);  // Set the transcribed text
       } else {
+        console.log(response);
+
         const errorData = await response.json();
         alert(errorData.error || "Error transcribing audio.");
       }
